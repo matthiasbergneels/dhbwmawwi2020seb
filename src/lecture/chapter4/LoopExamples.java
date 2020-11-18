@@ -56,5 +56,26 @@ public class LoopExamples {
             counter++;
         }
         System.out.println("Ende der UGLY for-Schleife");
+
+
+        System.out.println("Durchlaufen von Arrays - for-each-Schleife");
+        String[] words = {"Hallo", "Kartoffelwurst", "Auto", "Haus", "Kind", "Baum"};
+
+        System.out.println("For-Schleife über Array:");
+        for(int i = 0; i < words.length; i++){
+            System.out.println("Index " + i + ": " + words[i]);
+            if(words[i] == "Hallo"){
+                words[i] = "Tschüss";
+            }
+        }
+        System.out.println("Ende der For-Schleife");
+
+
+        System.out.println("For-Each-Schleife über Array");
+        for(String word: words){
+            System.out.println(word);
+        }
+
+
     }
 }

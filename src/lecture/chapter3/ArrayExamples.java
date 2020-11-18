@@ -31,6 +31,8 @@ public class ArrayExamples {
 
         char[][] tictactoe = new char[3][3];
 
+        tictactoe[0][1] = 'X';
+        tictactoe[0][0] = 'O';
 
 
         String[][] sentences = new String[5][];

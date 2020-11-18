@@ -97,9 +97,20 @@ public class OperatorExamples {
 
         String textResult;
 
-        textResult = numberA + numberB + text1 + " " + text2 + (numberA + numberB);
+        textResult = numberA + numberB + text1 + " " + text2 + numberA + numberB;
 
         System.out.println(textResult);
+
+
+        // scope
+        {
+            int numberC = 5;
+            int numberD = 10;
+
+            int result2 = numberC + numberD + numberA;
+        }
+
+        // System.out.println(numberC); --> numberC außerhalb des Scopes (Sichtbarkeit)
 
     }
 }

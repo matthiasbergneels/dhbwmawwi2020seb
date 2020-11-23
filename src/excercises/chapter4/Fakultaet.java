@@ -1,14 +1,10 @@
 package excercises.chapter4;
 
-import javax.swing.JOptionPane;
-
 public class Fakultaet {
 
     public static void main(String[] args) {
 
-        String userInput = JOptionPane.showInputDialog("Geben Sie eine Zahl ein:");
-
-        int fakultaet = Integer.parseInt(userInput);
+        int fakultaet = UserInput.returnUserInputAsInteger("Berechne Fakultät von: ");
         int result = 1;
 
         while(fakultaet > 0){

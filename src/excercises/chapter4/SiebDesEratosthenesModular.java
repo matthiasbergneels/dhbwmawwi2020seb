@@ -39,5 +39,6 @@ public class SiebDesEratosthenesModular {
                 System.out.println(i);
             }
         }
+        System.out.println("Ausgabe der Primzahlen beendet!");
     }
 }

@@ -2,14 +2,26 @@ package lecture.chapter5;
 
 public class Car {
 
-    // Attribute (Eigenschaften) für Objekte des Types "Car"
+    // (Instanz-)Attribute (Eigenschaften) für Objekte des Types "Car"
     private String color;
     private String licensePlate;
     private int horsePower;
     private double currentSpeed;
     private final String chassisNumber;
+    public final Brands brand;
 
     public static final String[] ALLOWED_COLORS = {"SCHWARZ", "ROT", "GRÜN", "BLAU", "LILA"};
+
+    public enum Brands{
+        MERCEDES,
+        BMW,
+        TESLA,
+        FIAT,
+        DACHIA
+    }
+
+    // (Klassen-)Attribut(e) - Eigenschaften die im Kontext der Klasse definiert sind
+    private static int carCounter = 0;
 
     // Sichtbarkeitsmodifier
     // - private: Sichtbar innerhalb der Klasse / Objektes
@@ -19,14 +31,17 @@ public class Car {
 
     // Konstruktor zur Erzeugung eines "Car" Objektes
     public Car(String color, String licensePlate,
-        int horsePower, String chassisNumber){
+        int horsePower, String chassisNumber, Brands brand){
 
         this.setColor(color);
         this.setLicensePlate(licensePlate);
         this.setHorsePower(horsePower);
         // TODO: e.g. check with REGEX ("NNNN-XXXX-####") for valid chassis number
         this.chassisNumber = chassisNumber;
+        this.brand = brand;
         this.currentSpeed = 0.0;
+
+        carCounter++;
     }
 
     // Methoden (Verhalten) für Objekte des Types "Car"
@@ -75,11 +90,8 @@ public class Car {
 
         for(String allowedColor : ALLOWED_COLORS){
             if(allowedColor.equals(color.toUpperCase())){
-                System.out.println(color + " ist gleich " + allowedColor);
                 this.color = allowedColor;
                 break;
-            }else{
-                System.out.println(color + " ist UNGLEICH " + allowedColor);
             }
         }
 
@@ -106,5 +118,10 @@ public class Car {
     public void setLicensePlate(String licensePlate){
         // TODO: e.g. check with REGEX ("XX-YY ####") for valid license plate
         this.licensePlate = licensePlate;
+    }
+
+    // Klassen-Methode (statisch)
+    public static int getCarCounter(){
+        return carCounter;
     }
 }

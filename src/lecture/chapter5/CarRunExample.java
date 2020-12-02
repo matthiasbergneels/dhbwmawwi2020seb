@@ -8,12 +8,16 @@ public class CarRunExample {
         Car myCar;
         Car yourCar;
 
+        System.out.println("Es gibt " + Car.getCarCounter() + " Autos!");
+
         // erzeugen eines Car Objektes
         myCar = new Car("lila", "HD-XY 1234",
-                199, "HJDS-JDHJ-1823");
+                199, "HJDS-JDHJ-1823", Car.Brands.MERCEDES);
                 // Quellcode: new Car("rot", "HD-XY 1234". 199, "HJDS-JDHJ-1823");
         yourCar = new Car("GRÜn", "MA-HH 9876",
-                150, "HJDU-ISKD-9825");
+                150, "HJDU-ISKD-9825", Car.Brands.TESLA);
+
+        System.out.println("Es gibt " + Car.getCarCounter() + " Autos!");
 
         // interagieren  mit dem Objekt (Instanz)
         // setzen der Attribute
@@ -27,6 +31,11 @@ public class CarRunExample {
         myCar.accelerate(30.0); // --> Quellcode: myCar.accelerate(30.0);
         myCar.brake(29.0);
         myCar.brake(3.0);
+
+        //myCar.brand = Car.Brands.BMW;
+
+        System.out.println("myCar ist von der Marke " + myCar.brand);
+        System.out.println("yourCar ist von der Marke " + yourCar.brand);
 
         //myCar.currentSpeed = 599.0;
 
@@ -53,5 +62,12 @@ public class CarRunExample {
 
 
         System.out.println("myCar, Farbe: " + myCar.getColor());
+
+
+        new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
+        new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
+        new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
+
+        System.out.println("Es gibt " + Car.getCarCounter() + " Autos!");
     }
 }

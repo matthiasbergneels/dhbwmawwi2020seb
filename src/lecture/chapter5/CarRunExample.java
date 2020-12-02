@@ -9,15 +9,18 @@ public class CarRunExample {
         Car yourCar;
 
         // erzeugen eines Car Objektes
-        myCar = new Car("kack-braun", "HD-XY 1234",
+        myCar = new Car("lila", "HD-XY 1234",
                 199, "HJDS-JDHJ-1823");
                 // Quellcode: new Car("rot", "HD-XY 1234". 199, "HJDS-JDHJ-1823");
-        yourCar = new Car("grün", "MA-HH 9876",
+        yourCar = new Car("GRÜn", "MA-HH 9876",
                 150, "HJDU-ISKD-9825");
 
         // interagieren  mit dem Objekt (Instanz)
         // setzen der Attribute
-        myCar.setColor("kack-braun");
+        String myCarColor = new String("LILA"); //"LILA";
+        System.out.println("Mein Auto wird: " + myCarColor);
+        myCar.setColor(myCarColor);
+        System.out.println("Mein Auto ist: " + myCar.getColor());
         //myCar.licensePlate = "Geht dich gar nichts an!";
 
         // nutzen der Methoden
@@ -46,7 +49,7 @@ public class CarRunExample {
         yourCar.accelerate(45.0);
         yourCar.brake(999.0);
 
-
+        yourCar.setColor(Car.ALLOWED_COLORS[3]);
 
 
         System.out.println("myCar, Farbe: " + myCar.getColor());

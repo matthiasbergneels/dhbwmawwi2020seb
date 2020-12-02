@@ -120,6 +120,11 @@ public class Car {
         this.licensePlate = licensePlate;
     }
 
+    protected void finalize(){
+        System.out.println("Das Auto " + this.chassisNumber + " wird verschrottet!");
+        carCounter--;
+    }
+
     // Klassen-Methode (statisch)
     public static int getCarCounter(){
         return carCounter;

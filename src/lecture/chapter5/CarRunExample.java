@@ -68,6 +68,21 @@ public class CarRunExample {
         new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
         new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
 
+
+        myCar = new Car("ROT", "HHHHHH", 56, "hjasdjkhdsa", Car.Brands.DACHIA);
+
+        // Referenzvariablen initialisieren --> zeigen auf "NICHTS"
+        //yourCar = null;
+        myCar = null;
+
+        System.gc();
+
+        try {
+            Thread.sleep(1000);
+        } catch(Exception e){
+            System.out.println("Programm möchte nicht schlafen!");
+        }
+
         System.out.println("Es gibt " + Car.getCarCounter() + " Autos!");
     }
 }

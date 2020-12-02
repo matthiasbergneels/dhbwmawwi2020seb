@@ -73,7 +73,7 @@ public class Car {
     public void setColor(String color){
         this.color = ALLOWED_COLORS[0];
 
-        for(String allowedColor:ALLOWED_COLORS){
+        for(String allowedColor : ALLOWED_COLORS){
             if(allowedColor.equals(color.toUpperCase())){
                 System.out.println(color + " ist gleich " + allowedColor);
                 this.color = allowedColor;

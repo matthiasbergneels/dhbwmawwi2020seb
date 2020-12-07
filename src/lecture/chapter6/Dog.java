@@ -17,6 +17,23 @@ public class Dog extends Animal{
         System.out.println("... ganz viel Fleisch!");
     }
 
+    @Override
+    public void breath() {
+        System.out.println("Der Hund " + this.getDescription() + " atmet! *hechel*");
+    }
+
+    /*
+    public void move(){     --> final Methoden können nicht überschrieben werden.
+
+    }
+    */
+
+    // Methode "move" aus Super-Klasse wird überladen (!)<
+    public void move(float distance){
+        super.move();
+        System.out.println("... um " + distance + " Meter");
+    }
+
     public void bark(){
         System.out.println("Der Hund " + this.getDescription() + " bellt!");
     }

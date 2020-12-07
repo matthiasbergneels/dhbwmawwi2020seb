@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public class Animal {
+public abstract class Animal {
 
     private float height;
     private String description;
@@ -16,11 +16,10 @@ public class Animal {
         System.out.println("Das Tier " + this.description + " isst!");
     }
 
-    public void breath(){
-        System.out.println("Das Tier " + this.description + " atmet!");
-    }
+    // Abstrakte Methoden definieren NUR die Methoden Signatur OHNE Implementierung (Methodenkörper)
+    public abstract void breath();
 
-    public void move(){
+    public final void move(){
         System.out.println("Das Tier " + this.description + " bewegt sich!");
     }
 

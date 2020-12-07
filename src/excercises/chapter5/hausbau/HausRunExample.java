@@ -14,7 +14,16 @@ public class HausRunExample {
 
 
             for(Haus haus : haeuser){
-                System.out.println(haus);
+                System.out.println("Hausinformationen: "
+                        + "Etagen: " + haus.getEtagen() + "; "
+                        + "Tueren: " + haus.getTueren() + "; "
+                        + "Fenster: " + haus.getFenster() + "; "
+                        + "Flaeche: " + haus.getFlaeche() + "qm; "
+                        + "Flachdach: " + (haus.isFlachdach() ? "ja" : "nein") + "; "
+                        + "Adresse: " + haus.getStrasse() + " " + haus.getHausnummer()
+                        + ", " + haus.getPlz() + " " + haus.getOrt());
+
+                //System.out.println(haus);
             }
 
             // Haeuser abreissen

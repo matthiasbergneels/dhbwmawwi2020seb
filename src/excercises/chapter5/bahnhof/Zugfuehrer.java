@@ -21,9 +21,14 @@ public class Zugfuehrer {
     }
 
     public void setZug(Gueterzug zug) {
-        if(zug != null){
-            zug.setFahrer(null);
+        if(this.zug != null){
+            this.zug.setFahrer(null);
         }
+
+        if(zug != null){
+            zug.setFahrer(this);
+        }
+
         this.zug = zug;
     }
 

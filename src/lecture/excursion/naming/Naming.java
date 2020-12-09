@@ -1,4 +1,16 @@
 /*
+Grundsätzlich:
+- sprechende / erklärende Namen
+    - was macht diese Methode?
+    - was speichert die Variable?
+    - was speichert das Attribut?
+    - was enthält ein Paket (vollqualifizierter Name)
+    - wofür gibt es diese Klasse?
+
+ - keine Sonderzeichen / Leerzeichen / Punkte in Java-Benennungen
+ */
+
+/*
 Paketname:
 - lowerCamelCase
 - keine Leerzeichen / keine Sonderzeichen
@@ -16,6 +28,7 @@ public class Naming {
     /*
     Attribute / Variablen
     - lowerCamelCase
+    - sprechende Bennenung
      */
 
     private int studentId;

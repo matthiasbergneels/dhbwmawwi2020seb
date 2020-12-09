@@ -1,13 +1,19 @@
 package excercises.chapter5.bahnhof;
 
+
+import excercises.chapter6.Tonne;
+import excercises.chapter6.Kiste;
+
 public class BahnhofRunExample {
 
         public static void main(String[] args) {
 
-
+            // narrowing Cast
             Fracht[] ladung = {	new Fracht("Zeug", 1007.0, "Pappe"),
                     new Fracht("Mehr Zeug", 678.0, "Plastik"),
-                    new Fracht("Flüssiges Zeug", 500.0, "Fass")};
+                    new Fracht("Flüssiges Zeug", 500.0, "Fass"),
+                    new Tonne("noch mehr flüssiges Zeug", 678.0, 100, 45),
+                    new Kiste("Magazine", 600, 50, 60, 32)};
 
             Gueterwagon meinWagon = new Gueterwagon(1678, "Kastenwagon", (byte)6);
 
@@ -25,6 +31,13 @@ public class BahnhofRunExample {
 
             nochEinZug.fahren();
             meinZug.fahren();
+
+
+            for(Fracht aktuelleFracht: ladung){
+                // Nutzen der Polymorphy --> weil ich nicht weiß ob es eine Fracht, eine Tonne oder eine Kiste ist
+                // aber die spezifische Methode ausgeführt wird.
+                System.out.println("Aktuelles Volumen: " + aktuelleFracht.getVolumen());
+            }
 
             System.out.println("Informationen über meinZug:");
             System.out.println("Gueterzug: " + meinZug.getAnzWagons() + meinZug.getNummer());

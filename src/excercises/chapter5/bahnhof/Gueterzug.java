@@ -48,7 +48,6 @@ public class Gueterzug {
 
         // bi-direktionale Beziehung setzen
         this.lok.setZug(this);
-
     }
 
     public Gueterwagon[] getWagons() {

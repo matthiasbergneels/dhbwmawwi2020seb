@@ -1,4 +1,4 @@
-package excercises.chapter7;
+package lecture.chapter7;
 
 public class Airplane implements Bookable{
 

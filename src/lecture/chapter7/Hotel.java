@@ -16,13 +16,13 @@ public class Hotel implements Bookable{
 
 
     @Override
-    public int freeSlots() {
+    public int freeSlot() {
         return this.roomCount - this.bookedRoomCount;
     }
 
     @Override
     public boolean bookSlots(int slots) {
-        if(freeSlots() >= slots){
+        if(freeSlot() >= slots){
             bookedRoomCount += slots;
             return true;
         }

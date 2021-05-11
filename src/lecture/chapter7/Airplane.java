@@ -2,19 +2,19 @@ package excercises.chapter7;
 
 public class Airplane implements Bookable{
 
-    private boolean seats[];
+    private boolean bookedSeat[];
 
     public Airplane(int seatCount){
-        seats = new boolean[seatCount];
+        bookedSeat = new boolean[seatCount];
     }
 
     public void fly(){
         System.out.println("und ich flieg, flieg, flieg... ");
     }
 
-    public int freeSlots(){
+    public int freeSlot(){
         int freeSeats = 0;
-        for(boolean seat : seats){
+        for(boolean seat : bookedSeat){
             if(!seat){
                 freeSeats++;
             }
@@ -23,13 +23,13 @@ public class Airplane implements Bookable{
     }
 
     public boolean bookSlots(int slots){
-        if(freeSlots() < slots){
+        if(freeSlot() < slots){
             return false;
         }
 
-        for(int i=0; i < seats.length; i++){
-            if(!seats[i]){
-                seats[i] = true;
+        for(int i = 0; i < bookedSeat.length; i++){
+            if(!bookedSeat[i]){
+                bookedSeat[i] = true;
                 slots--;
             }
 

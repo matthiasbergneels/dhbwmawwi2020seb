@@ -2,14 +2,11 @@ package excercises.chapter7;
 
 public class Bus implements Bookable{
 
-
-
-    @Override
-    public int freeSlots() {
+    public int freeSlot() {
         return 0;
     }
 
-    @Override
+
     public boolean bookSlots(int slots) {
         return false;
     }

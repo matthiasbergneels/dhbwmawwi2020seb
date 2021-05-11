@@ -8,9 +8,9 @@ public class TravelAgency {
 
         myAirplane.fly();
 
-        System.out.println("Freie Plätze in myAirplane: " + myAirplane.freeSlots());
+        System.out.println("Freie Plätze in myAirplane: " + myAirplane.freeSlot());
         boolean bookingResult = myAirplane.bookSlots(10);
-        System.out.println("10 Plätze gebucht: " + bookingResult + " - verbleibende freie Plätze: " + myAirplane.freeSlots());
+        System.out.println("10 Plätze gebucht: " + bookingResult + " - verbleibende freie Plätze: " + myAirplane.freeSlot());
 
 
         System.out.println("Entspricht myAirplane dem Bookable Interface? " + (myAirplane instanceof Bookable));
@@ -25,9 +25,9 @@ public class TravelAgency {
 
         for(int i = 0; i < canBeBooked.length; i++) {
             System.out.println("==== Bookable Object - Index " + i);
-            System.out.println("Freie Plätze: " + canBeBooked[i].freeSlots());
+            System.out.println("Freie Plätze: " + canBeBooked[i].freeSlot());
             bookingResult = canBeBooked[i].bookSlots(25);
-            System.out.println("Buchung erfolgreich? " + bookingResult + " - verbleibende freie Plätze: " + canBeBooked[i].freeSlots());
+            System.out.println("Buchung erfolgreich? " + bookingResult + " - verbleibende freie Plätze: " + canBeBooked[i].freeSlot());
 
             canBeBooked[i].unbookSlots(50);
 

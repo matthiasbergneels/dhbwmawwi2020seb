@@ -13,7 +13,10 @@ public class TravelAgency {
         System.out.println("10 Plätze gebucht: " + bookingResult + " - verbleibende freie Plätze: " + myAirplane.freeSlots());
 
 
+        System.out.println("Entspricht myAirplane dem Bookable Interface? " + (myAirplane instanceof Bookable));
+
         Bookable[] canBeBooked = new Bookable[5];
+        // narrowing Cast!
         canBeBooked[0] = myAirplane;
         canBeBooked[1] = new Hotel(100);
         canBeBooked[2] = new Hotel(15);
@@ -25,6 +28,13 @@ public class TravelAgency {
             System.out.println("Freie Plätze: " + canBeBooked[i].freeSlots());
             bookingResult = canBeBooked[i].bookSlots(25);
             System.out.println("Buchung erfolgreich? " + bookingResult + " - verbleibende freie Plätze: " + canBeBooked[i].freeSlots());
+
+            canBeBooked[i].unbookSlots(50);
+
+            if(canBeBooked[i] instanceof Airplane){
+                // widening Cast
+                ((Airplane)canBeBooked[i]).fly();
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package lecture.chapter7;
 
+import lecture.chapter8.NotEnoughFreeSlotsException;
+
 public class Bus implements Bookable{
 
     public int freeSlot() {
@@ -7,7 +9,7 @@ public class Bus implements Bookable{
     }
 
 
-    public boolean bookSlots(int slots) {
-        return false;
+    public void bookSlots(int slots) throws NotEnoughFreeSlotsException {
+        throw new NotEnoughFreeSlotsException(slots, freeSlot());
     }
 }

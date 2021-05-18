@@ -3,6 +3,7 @@ package test.lecture.excursion.junit;
 import lecture.excursion.junit.Calculator;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,7 +59,7 @@ class CalculatorTest {
             "10, 5, 5",
             "15.0, 8, 7",
             "18, 20, -2",
-            "100000000, -1, 100000001"
+            "100000000, -1, 100000000"
     })
     void subtract(double numberA, double numberB, double expectedResult) {
         assertEquals(expectedResult, calculatorToTest.subtract(numberA, numberB));

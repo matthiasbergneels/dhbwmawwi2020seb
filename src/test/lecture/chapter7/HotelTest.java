@@ -27,7 +27,7 @@ class HotelTest {
                 myHotel.bookSlots(slots+1);
             }
         });
-        
+
         assertEquals(slots, myNotEnoughFreeSlotsException.getFreeSlots());
     }
 

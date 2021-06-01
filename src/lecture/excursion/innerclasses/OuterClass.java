@@ -58,6 +58,13 @@ public class OuterClass {
         myLambdaFunction.print(message);
     }
 
+    void printFromLambdaFunctionShortend(String message){
+        InnerInterface myLambdaFunction =
+                lambdaMessage -> System.out.println(this.getClass().getName() + " - Lambda Funktion sagt: " + lambdaMessage);
+
+        myLambdaFunction.print(message);
+    }
+
     public static void main(String[] args) {
         String message = "Hello World";
 

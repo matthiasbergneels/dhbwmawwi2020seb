@@ -32,6 +32,32 @@ public class OuterClass {
         myInnerLocalClass.print(message);
     }
 
+    void printFromInnerAnonymousClass(String message){
+        // innere anonyme Klasse
+        InnerInterface myInnerAnonymousClass = new InnerInterface(){
+            public void print(String message){
+                System.out.println(this.getClass().getName() + " - Innere anonyme Klasse sagt: " + message);
+            }
+        };
+
+        InnerInterface myInnerAnonymousClass2 = new InnerInterface(){
+            public void print(String message){
+                System.out.println(this.getClass().getName() + " - Innere anonyme Klasse sagt: " + message);
+            }
+        };
+
+        myInnerAnonymousClass.print(message);
+        myInnerAnonymousClass2.print(message);
+    }
+
+    void printFromLambdaFunction(String message){
+        InnerInterface myLambdaFunction = (String lambdaMessage) -> {
+            System.out.println(this.getClass().getName() + " - Lambda Funktion sagt: " + lambdaMessage);
+        };
+
+        myLambdaFunction.print(message);
+    }
+
     public static void main(String[] args) {
         String message = "Hello World";
 
@@ -45,6 +71,10 @@ public class OuterClass {
         myInnerElementClass.print(message);
 
         myOuterClass.printFromInnerLocalClass(message);
+
+        myOuterClass.printFromInnerAnonymousClass(message);
+
+        myOuterClass.printFromLambdaFunction(message);
 
     }
 }

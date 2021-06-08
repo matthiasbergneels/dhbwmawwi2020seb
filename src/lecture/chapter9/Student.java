@@ -68,4 +68,10 @@ public class Student implements Comparable<Student>{
                 ", age=" + age +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o){
+        // TODO - Implement Equals
+        return false;
+    }
 }

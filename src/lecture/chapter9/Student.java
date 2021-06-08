@@ -71,7 +71,72 @@ public class Student implements Comparable<Student>{
 
     @Override
     public boolean equals(Object o){
-        // TODO - Implement Equals
-        return false;
+        // alias Check
+        if(this == o){
+            return true;
+        }
+
+        // not null check
+        if(o == null){
+            return false;
+        }
+
+        // typ check --> wäre auch mit instance of möglich
+        if(this.getClass() != o.getClass()){
+            return false;
+        }
+
+        // Feld (Attribut) Vergleich
+        Student s = (Student)o;
+
+        if(this.getStudentId() != s.getStudentId()){
+            return false;
+        }
+
+        if(!this.getFamilyName().equals(s.getFamilyName())){
+            return false;
+        }
+
+        if(!this.getName().equals(s.getName())){
+            return false;
+        }
+
+        if(this.getAge() != s.getAge()){
+            return false;
+        }
+
+        return true;
     }
+
+    @Override
+    public int hashCode(){
+        // TODO - implememtieren der HashCode Methode passend zu equals
+        return 0;
+    }
+
+
+    /* --> equals Generiert von IntelliJ
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (age != student.age) return false;
+        if (studentId != student.studentId) return false;
+        if (familyName != null ? !familyName.equals(student.familyName) : student.familyName != null) return false;
+        return name != null ? name.equals(student.name) : student.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = age;
+        result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + studentId;
+        return result;
+    }
+
+     */
 }

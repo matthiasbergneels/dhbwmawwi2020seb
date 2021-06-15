@@ -101,16 +101,18 @@ public class Student implements Comparable<Student>{
             return false;
         }
 
+        /* --> entfernen für compareTo Konsistenz
         if(this.getAge() != s.getAge()){
             return false;
         }
+        */
 
         return true;
     }
 
     @Override
     public int hashCode(){
-        return this.getStudentId() ^ this.getFamilyName().hashCode() ^ this.getName().hashCode() ^ this.getAge();
+        return this.getStudentId() ^ this.getFamilyName().hashCode() ^ this.getName().hashCode(); // --> entfernen für compareTo Konsistenz  ^ this.getAge();
     }
 
 

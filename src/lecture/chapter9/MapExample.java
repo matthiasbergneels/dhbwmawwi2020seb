@@ -27,7 +27,8 @@ public class MapExample {
 
         Map<Integer, String> myCityMap = new TreeMap<>();
 
-        myCityMap.put(new Integer(69190), "Walldorf");
+        //myCityMap.put(new Integer(69190), "Walldorf"); --> Konstruktor ist deprecated
+        myCityMap.put(Integer.valueOf(69190), "Walldorf");
         myCityMap.put(69181, "Leimen"); // --> auto-boxing (ein Wert einfachen Typs wird in ein Objekt der Wrapper Klasse umgewandelt)
 
         System.out.println("PLZ 69190: " + myCityMap.get(69190)); // --> auto-boxing

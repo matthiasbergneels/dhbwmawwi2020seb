@@ -13,6 +13,9 @@ public class Logon extends JFrame{
 
     private final String ACTION_COMMAND_CLOSE_EVENT = "CLOSE_EVENT";
     private final String ACTION_COMMAND_PRINT_EVENT = "PRINT_EVENT";
+    private final String ACTION_COMMAND_MAXIMIZE_WINDOW = "MAXIMIZE_WINDOW";
+    private final String ACTION_COMMAND_PACK_WINDOW = "PACK_WINDOW";
+    private final String ACTION_COMMAND_MONITOR_PREFIX = "MONITOR_";
 
     public Logon() throws ParseException{
         this.setTitle("Logon");
@@ -116,7 +119,12 @@ public class Logon extends JFrame{
         ActionListener buttonListener = (ActionEvent e) -> {
             System.out.println("Action Command: " + e.getActionCommand());
             System.out.println("Parameter: " + e.paramString());
-            System.out.println("Modifiers: " + e.getModifiers());
+            System.out.println("Modifiers: " + e.getModifiers() + "; Binär: " + Integer.toBinaryString(e.getModifiers()));
+
+            System.out.println("Shift pressed ("+ Integer.toBinaryString(ActionEvent.SHIFT_MASK) +"):"  + ((e.getModifiers() & ActionEvent.SHIFT_MASK) == ActionEvent.SHIFT_MASK));
+            System.out.println("Ctrl pressed ("+ Integer.toBinaryString(ActionEvent.CTRL_MASK) +"):"  + ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK));
+            System.out.println("Windws / Command pressed ("+ Integer.toBinaryString(ActionEvent.META_MASK) +"):"  + ((e.getModifiers() & ActionEvent.META_MASK) == ActionEvent.META_MASK));
+            System.out.println("Alt / Option pressed ("+ Integer.toBinaryString(ActionEvent.ALT_MASK) +"):"  + ((e.getModifiers() & ActionEvent.ALT_MASK) == ActionEvent.ALT_MASK));
 
             if(e.getActionCommand().equals(ACTION_COMMAND_CLOSE_EVENT)){
                 System.exit(0);
@@ -182,6 +190,8 @@ public class Logon extends JFrame{
 
         cancelButton.addMouseListener(buttonMouseListener);
 
+
+        // Set Swing Menu Bar
         JMenuBar frameMenuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("Datei");
 
@@ -192,6 +202,7 @@ public class Logon extends JFrame{
         fileMenu.add(closeMenuItem);
         frameMenuBar.add(fileMenu);
 
+        /*
         JMenu windowSetupMenu = new JMenu("Fenster");
         JMenuItem monitorOneItem = new JMenuItem("Monitor 1");
         JMenuItem monitorTwoItem = new JMenuItem("Monitor 2");
@@ -202,10 +213,23 @@ public class Logon extends JFrame{
         windowSetupMenu.addSeparator();
         windowSetupMenu.add(maximizeItem);
         windowSetupMenu.add(packItem);
+         */
 
-        frameMenuBar.add(windowSetupMenu);
+        frameMenuBar.add(this.generateWindowSetupMenu());
 
         this.setJMenuBar(frameMenuBar);
+
+
+        // Set AWT Menü Bar --> OS Nativ
+        MenuBar myBar = new MenuBar();
+        Menu myMenu = new Menu("Datei");
+        MenuItem myItem = new MenuItem(("Schließen"));
+        myItem.setActionCommand(ACTION_COMMAND_CLOSE_EVENT);
+        myItem.addActionListener(buttonListener);
+
+        myMenu.add(myItem);
+        myBar.add(myMenu);
+        this.setMenuBar(myBar);
 
 
         // set JFrame behavior
@@ -215,7 +239,6 @@ public class Logon extends JFrame{
     }
 
     public static void main(String[] args) throws ParseException {
-
         GraphicsDevice defaultScreenDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
         System.out.println("Screen Dimensions: "
@@ -237,6 +260,76 @@ public class Logon extends JFrame{
                     + " x " + screen.getDefaultConfiguration().getBounds().getHeight());
             System.out.println(screen.getDefaultConfiguration().getBounds().getX()
                     + " / " + screen.getDefaultConfiguration().getBounds().getY());
+        }
+    }
+
+    private JMenu generateWindowSetupMenu(){
+        JMenu windowSetupMenu = new JMenu("Fenster");
+
+        GraphicsEnvironment virtualGraphicsEvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] screens = virtualGraphicsEvironment.getScreenDevices();
+        MonitorDescriptor[] monitorDescriptors = new MonitorDescriptor[screens.length];
+
+        ActionListener windowMenuItemListener = (ActionEvent event)->{
+            if(event.getActionCommand().equals(ACTION_COMMAND_MAXIMIZE_WINDOW)){
+                this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            } else if(event.getActionCommand().equals(ACTION_COMMAND_PACK_WINDOW)){
+                this.pack();
+            } else if(event.getActionCommand().contains(ACTION_COMMAND_MONITOR_PREFIX)){
+                for(MonitorDescriptor monitorDescriptor : monitorDescriptors){
+                    if(event.getActionCommand().equals(monitorDescriptor.getActionCommand())){
+                        this.setLocation(monitorDescriptor.getLocationPoint());
+                    }
+                }
+            }
+        };
+
+        for(int i = 0; i < screens.length; i++){
+            monitorDescriptors[i] = new MonitorDescriptor(screens[i], i);
+            JMenuItem monitor = new JMenuItem(monitorDescriptors[i].getLabel());
+            monitor.setActionCommand(monitorDescriptors[i].getActionCommand());
+            monitor.addActionListener(windowMenuItemListener);
+
+            windowSetupMenu.add(monitor);
+        }
+
+        JMenuItem maximizeItem = new JMenuItem("maximieren");
+        maximizeItem.setActionCommand(ACTION_COMMAND_MAXIMIZE_WINDOW);
+        maximizeItem.addActionListener(windowMenuItemListener);
+        JMenuItem packItem = new JMenuItem("verkleinern");
+        packItem.setActionCommand(ACTION_COMMAND_PACK_WINDOW);
+        packItem.addActionListener(windowMenuItemListener);
+
+        windowSetupMenu.addSeparator();
+        windowSetupMenu.add(maximizeItem);
+        windowSetupMenu.add(packItem);
+
+        return windowSetupMenu;
+    }
+
+    class MonitorDescriptor{
+        private GraphicsDevice screen;
+        private Point locationPoint;
+        private String actionCommand;
+        private String label;
+
+        MonitorDescriptor(GraphicsDevice screen, int index) {
+            this.screen = screen;
+            this.label = "Monitor " + (index+1) + " ("+screen.getDisplayMode()+")";
+            this.locationPoint = new Point(screen.getDefaultConfiguration().getBounds().x, screen.getDefaultConfiguration().getBounds().y);
+            this.actionCommand = ACTION_COMMAND_MONITOR_PREFIX + index;
+        }
+
+        Point getLocationPoint(){
+            return locationPoint;
+        }
+
+        String getActionCommand(){
+            return actionCommand;
+        }
+
+        String getLabel(){
+            return label;
         }
     }
 

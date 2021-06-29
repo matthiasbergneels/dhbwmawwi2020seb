@@ -123,15 +123,19 @@ public class Logon extends JFrame{
 
             System.out.println("Shift pressed ("+ Integer.toBinaryString(ActionEvent.SHIFT_MASK) +"):"  + ((e.getModifiers() & ActionEvent.SHIFT_MASK) == ActionEvent.SHIFT_MASK));
             System.out.println("Ctrl pressed ("+ Integer.toBinaryString(ActionEvent.CTRL_MASK) +"):"  + ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK));
-            System.out.println("Windws / Command pressed ("+ Integer.toBinaryString(ActionEvent.META_MASK) +"):"  + ((e.getModifiers() & ActionEvent.META_MASK) == ActionEvent.META_MASK));
+            System.out.println("Windows / Command pressed ("+ Integer.toBinaryString(ActionEvent.META_MASK) +"):"  + ((e.getModifiers() & ActionEvent.META_MASK) == ActionEvent.META_MASK));
             System.out.println("Alt / Option pressed ("+ Integer.toBinaryString(ActionEvent.ALT_MASK) +"):"  + ((e.getModifiers() & ActionEvent.ALT_MASK) == ActionEvent.ALT_MASK));
 
             if(e.getActionCommand().equals(ACTION_COMMAND_CLOSE_EVENT)){
                 System.exit(0);
             }else if(e.getActionCommand().equals(ACTION_COMMAND_PRINT_EVENT)){
                 System.out.println("Ausgabe von Port: " + portField.getText());
+
+
             }
         };
+
+
 
         okButton.addActionListener(buttonListener);
         cancelButton.addActionListener(buttonListener);
@@ -218,7 +222,6 @@ public class Logon extends JFrame{
         frameMenuBar.add(this.generateWindowSetupMenu());
 
         this.setJMenuBar(frameMenuBar);
-
 
         // Set AWT Menü Bar --> OS Nativ
         MenuBar myBar = new MenuBar();

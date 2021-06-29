@@ -50,7 +50,7 @@ public class Person implements Serializable {
     public void setAge(int age) {
         this.age = age;
     }
-
+    
     // de-serialize life cycle
     private Object readResolve(){
         this.setFullName();

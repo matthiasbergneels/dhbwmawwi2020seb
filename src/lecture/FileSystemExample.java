@@ -1,6 +1,7 @@
 package lecture;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 
@@ -49,7 +50,70 @@ public class FileSystemExample {
         listDirectoryAndContent(userDir, 0);
 
 
+        System.out.println("Umgang mit Verzeichnissen und Dateien");
+        System.out.println("=====================================");
 
+        File myDirectory = new File(System.getProperty("user.dir") + File.separator + "myDirectory");
+        File myRenamedDirectory = new File(System.getProperty("user.dir") + File.separator + "myRenamedDirectory");
+
+        System.out.println("myDirectory existiert? " + myDirectory.exists());
+
+        // Verzeichnis anlegen
+        if(!myDirectory.exists()){
+            System.out.println("Verzeichnis anlegen");
+            myDirectory.mkdir();
+            System.out.println("Verzeichnis " + myDirectory.getPath() + " angelegt.");
+            System.out.println(myDirectory.getPath() + ": " + myDirectory.exists());
+            System.out.println(myRenamedDirectory.getPath() + ": " + myRenamedDirectory.exists());
+        }
+
+        // Verzeichnis umbenennen
+        if(myDirectory.exists() && !myRenamedDirectory.exists()){
+            System.out.println("Verzeichnis umbenennen");
+            myDirectory.renameTo(myRenamedDirectory);
+            System.out.println(myDirectory.getPath() + ": " + myDirectory.exists());
+            System.out.println(myRenamedDirectory.getPath() + ": " + myRenamedDirectory.exists());
+        }
+
+
+        File myFile = new File(myRenamedDirectory.getPath() + File.separator + "myFile.txt");
+        File myRenamedFile = new File(myRenamedDirectory.getPath() + File.separator + "myRenamedFile.txt");
+
+        // Datei anlegen
+        if(!myFile.exists()){
+            System.out.println("Datei anlegen");
+            try {
+                myFile.createNewFile();
+                System.out.println(myFile.getPath() + ": " + myFile.exists());
+                System.out.println(myRenamedFile.getPath() + ": " + myRenamedFile.exists());
+            }catch (IOException e){
+                System.out.println("Datei anlegen hat nicht funktioniert.");
+            }
+        }
+
+        // Datei umbenennen
+        if(myFile.exists() && !myRenamedFile.exists()){
+            System.out.println("Datei umbenennen");
+            myFile.renameTo(myRenamedFile);
+            System.out.println(myFile.getPath() + ": " + myFile.exists());
+            System.out.println(myRenamedFile.getPath() + ": " + myRenamedFile.exists());
+        }
+
+        // Datei löschen
+        if(myRenamedFile.exists()){
+            System.out.println("Datei löschen");
+            myRenamedFile.delete();
+            System.out.println(myFile.getPath() + ": " + myFile.exists());
+            System.out.println(myRenamedFile.getPath() + ": " + myRenamedFile.exists());
+        }
+
+        // Verzeichnis löschen
+        if(myRenamedDirectory.exists()){
+            System.out.println("Verzeichnis löschen");
+            myRenamedDirectory.delete();
+            System.out.println(myDirectory.getPath() + ": " + myDirectory.exists());
+            System.out.println(myRenamedDirectory.getPath() + ": " + myRenamedDirectory.exists());
+        }
     }
 
 

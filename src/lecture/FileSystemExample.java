@@ -1,8 +1,12 @@
 package lecture;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Set;
 
 public class FileSystemExample {
@@ -114,6 +118,62 @@ public class FileSystemExample {
             System.out.println(myDirectory.getPath() + ": " + myDirectory.exists());
             System.out.println(myRenamedDirectory.getPath() + ": " + myRenamedDirectory.exists());
         }
+
+
+        System.out.println("Einlesen von Daten über System.in (Bytes)");
+        System.out.println("=====================================");
+
+        byte[] input = new byte[255];
+
+        System.out.println("Geben Sie einen Text ein: ");
+
+        try{
+            System.in.read(input, 0, 15);
+        } catch (IOException e){
+            System.out.println("Fehler beim einlesen von der Konsole");
+        }
+
+        System.out.println(input);
+        System.out.println(new String(input) + "!");
+
+
+        System.out.println("Einlesen von Daten über System.in (Char)");
+        System.out.println("=====================================");
+
+        InputStreamReader systemInReader = new InputStreamReader(System.in);
+        BufferedReader systemInBufferedReader = new BufferedReader(systemInReader);
+
+        System.out.println("Bitte einen Text eingeben:");
+
+        try {
+            String inputText = systemInBufferedReader.readLine();
+
+            System.out.println(inputText);
+        } catch (IOException e){
+            System.out.println("Fehler beim einlesen von der Konsole");
+        }
+
+        System.out.println("Einlesen von Daten über System.in (Scanner based)");
+        System.out.println("=====================================");
+
+        Scanner scanner = new Scanner(System.in);
+
+        ArrayList<String> myMessage = new ArrayList<String>();
+
+        System.out.println("Bitte text eingeben (Ende mit exit):");
+        while(scanner.hasNext()){
+            String messageLine = scanner.nextLine();
+            if (messageLine.equals("exit")){
+                break;
+            }
+            myMessage.add(messageLine);
+        }
+
+        for(String messageLine : myMessage){
+            System.out.println(messageLine);
+        }
+
+        
     }
 
 

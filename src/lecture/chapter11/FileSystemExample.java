@@ -1,9 +1,6 @@
-package lecture;
+package lecture.chapter11;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
@@ -173,7 +170,50 @@ public class FileSystemExample {
             System.out.println(messageLine);
         }
 
-        
+        File myTextFile = new File(System.getProperty("user.dir") + File.separator + "myTextFile.txt");
+
+        if(!myTextFile.exists()){
+            try{
+                myTextFile.createNewFile();
+            } catch (IOException e){
+                System.out.println("Fehler beim Anlegen der Textdatei.");
+            }
+        }
+
+        FileWriter myTextFileWriter = null;
+
+        try{
+            myTextFileWriter = new FileWriter(myTextFile);
+            for(String messageLine : myMessage){
+                myTextFileWriter.write(messageLine + "\n");
+            }
+        } catch(IOException e){
+            System.out.println("Fehler beim Schreiben in die Textdatei!");
+        }finally {
+            try {
+                myTextFileWriter.close();
+            } catch (IOException e){
+                System.out.println("Fehler beim Schließen der Textdatei!");
+            }
+        }
+
+
+        // auslesen aus Textdatei
+        try(FileReader myTextFileReader = new FileReader(myTextFile);
+            BufferedReader myTextBufferedReader = new BufferedReader(myTextFileReader)){
+
+            String line;
+            while((line = myTextBufferedReader.readLine()) != null){
+                System.out.println(line);
+            }
+
+        } catch (FileNotFoundException e){
+            System.out.println("Datei wurde nicht gefunden!");
+        } catch (IOException e){
+            System.out.println("Fehler beim lesen der Datei!");
+        }
+
+
     }
 
 

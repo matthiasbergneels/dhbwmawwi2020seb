@@ -3,10 +3,12 @@ package lecture.chapter12;
 public class LinkedList<T> {
 
     private Node<T> firstNode;
+    private int size;
 
 
     public void add(T data){
         Node<T> newNode = new Node<T>(data);
+        size++;
 
         if(firstNode == null){
             firstNode = newNode;
@@ -41,16 +43,33 @@ public class LinkedList<T> {
 
         return false;
     }
-    
+
     public boolean remove(T data){
+        if(firstNode != null){
+
+            if(firstNode.getData().equals(data)){
+                firstNode = firstNode.getNextNode();
+                size--;
+                return true;
+            }
+
+            Node<T> currentNode = firstNode;
+            while(currentNode.getNextNode() != null){
+                if(currentNode.getNextNode().getData().equals(data)){
+                    currentNode.setNextNode(currentNode.getNextNode().getNextNode());
+                    size--;
+                    return true;
+                }
+                currentNode = currentNode.getNextNode();
+            }
+        }
+
         return false;
     }
 
     public int size(){
-        return 0;
+        return this.size;
     }
-
-
 
     public void printList(){
         if (firstNode == null) {

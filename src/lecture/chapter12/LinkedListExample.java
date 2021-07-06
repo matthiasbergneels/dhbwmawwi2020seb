@@ -6,7 +6,7 @@ public class LinkedListExample {
 
         LinkedList<String> myNameList = new LinkedList<String>();
 
-        System.out.println("Klaus: " + myNameList.contains("Klaus"));
+        System.out.println("Enthält Klaus: " + myNameList.contains("Klaus"));
 
         myNameList.add("Klaus");
         myNameList.add("Franz");
@@ -15,15 +15,21 @@ public class LinkedListExample {
         myNameList.add("Michel");
         // myNameList.add(new Object()); --> geht nicht, wegen Generic Typisierung
 
-
-        System.out.println("Klaus: " + myNameList.contains("Klaus"));
-        System.out.println("Gabi: " + myNameList.contains("Gabi"));
-        System.out.println("Michel: " + myNameList.contains("Michel"));
-        System.out.println("Fritz: " + myNameList.contains("Fritz"));
+        System.out.println("Anzahl Elemente: " + myNameList.size());
+        System.out.println("Enthält Klaus: " + myNameList.contains("Klaus"));
+        System.out.println("Enthält Gabi: " + myNameList.contains("Gabi"));
+        System.out.println("Enthält Michel: " + myNameList.contains("Michel"));
+        System.out.println("Enthält Fritz: " + myNameList.contains("Fritz"));
 
         myNameList.printList();
 
         myNameList.print();
 
+        System.out.println("Lösche Klaus: " + myNameList.remove("Klaus"));
+        System.out.println("Lösche Gabi: " + myNameList.remove("Gabi"));
+        System.out.println("Lösche Michel: " + myNameList.remove("Michel"));
+        System.out.println("Lösche Fritz: " + myNameList.remove("Fritz"));
+
+        System.out.println("Anzahl Elemente: " + myNameList.size());
     }
 }

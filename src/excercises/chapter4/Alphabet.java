@@ -7,9 +7,7 @@ public class Alphabet {
         System.out.println("Alphabet:");
         for(char i = 'A'; i <= 'Z'; i++){
             System.out.print(i + " ");
-
         }
-
     }
 
 }

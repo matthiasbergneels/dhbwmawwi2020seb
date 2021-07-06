@@ -1,10 +1,14 @@
 package excercises.chapter4;
 
+import java.util.Scanner;
+
 public class Fakultaet {
 
     public static void main(String[] args) {
 
-        int fakultaet = UserInput.returnUserInputAsInteger("Berechne Fakultät von: ");
+        Scanner scanner = new Scanner(System.in);
+
+        int fakultaet = scanner.nextInt();
         int result = 1;
 
         while(fakultaet > 0){

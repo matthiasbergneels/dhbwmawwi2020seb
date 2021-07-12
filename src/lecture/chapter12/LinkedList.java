@@ -108,7 +108,7 @@ public class LinkedList<T> {
 
     private class Node<D>{
 
-        private D data;
+        private final D data;
         private Node nextNode;
 
         public Node(D data){

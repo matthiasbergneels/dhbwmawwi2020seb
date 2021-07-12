@@ -8,11 +8,12 @@ public class LinkedListExample {
 
         System.out.println("Enthält Klaus: " + myNameList.contains("Klaus"));
 
-        myNameList.add("Klaus");
-        myNameList.add("Franz");
-        myNameList.add("Gabi");
-        myNameList.add("Steffi");
-        myNameList.add("Michel");
+                                    // Komplexität
+        myNameList.add("Klaus");    // O(1)
+        myNameList.add("Franz");    // O(2)
+        myNameList.add("Gabi");     // O(3)
+        myNameList.add("Steffi");   // ...
+        myNameList.add("Michel");   // O(n)
         // myNameList.add(new Object()); --> geht nicht, wegen Generic Typisierung
 
         System.out.println("Anzahl Elemente: " + myNameList.size());

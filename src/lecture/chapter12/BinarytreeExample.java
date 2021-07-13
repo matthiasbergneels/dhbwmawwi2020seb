@@ -16,5 +16,12 @@ public class BinarytreeExample {
         System.out.println(numberTree.add(5));
 
         System.out.println("Baum befüllt!");
+
+        numberTree.printInOrder();
+        numberTree.printPreOrder();
+        numberTree.printPostOrder();
+
+        System.out.println("Enthält 10: " + numberTree.contains(10));
+        System.out.println("Enthält 20: " + numberTree.contains(20));
     }
 }

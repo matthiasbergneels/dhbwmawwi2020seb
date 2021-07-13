@@ -5,9 +5,8 @@ public class LinkedList<T> {
     private Node<T> firstNode;
     private int size;
 
-
     public void add(T data){
-        Node<T> newNode = new Node<T>(data);
+        Node<T> newNode = new Node<>(data);
         size++;
 
         if(firstNode == null){

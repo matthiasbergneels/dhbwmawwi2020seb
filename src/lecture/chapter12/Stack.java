@@ -31,7 +31,7 @@ public class Stack<D> {
     private class Node<D>{
 
         private final D data;
-        private Node<D> lowerNode;
+        private final Node<D> lowerNode;
 
         public Node(D data, Node<D> lowerNode){
             this.data = data;

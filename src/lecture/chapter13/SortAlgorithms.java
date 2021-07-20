@@ -17,6 +17,11 @@ public class SortAlgorithms {
         sortedNumbers = bubbleSortNumberArrayV3(unsortedNumbers.clone());
         printArray(sortedNumbers);
 
+        sortedNumbers = selectionSortNumberArray(unsortedNumbers.clone());
+        printArray(sortedNumbers);
+
+        sortedNumbers = quickSortNumberArray(unsortedNumbers.clone());
+        printArray(sortedNumbers);
     }
 
     public static int[] bubbleSortNumberArray(int numbers[]) {
@@ -28,7 +33,7 @@ public class SortAlgorithms {
             for (int j = 0; j < (numbers.length - 1); j++) {
                 if (numbers[j] > numbers[j + 1]) {
                     // tausche Elemente
-                    swapElementsInArray(numbers, j);
+                    swapElementsInArray(numbers, j, j + 1);
                 }
             }
         }
@@ -50,7 +55,7 @@ public class SortAlgorithms {
             for (int j = 0; j < (numbers.length - 1 - i); j++) {
                 if (numbers[j] > numbers[j + 1]) {
                     // tausche Elemente
-                    swapElementsInArray(numbers, j);
+                    swapElementsInArray(numbers, j, j + 1);
                 }
             }
         }
@@ -76,7 +81,7 @@ public class SortAlgorithms {
             for (int j = 0; j <= i - 1; j++) {
                 if (numbers[j] > numbers[j + 1]) {
                     // tausche Elemente
-                    swapElementsInArray(numbers, j);
+                    swapElementsInArray(numbers, j, j + 1);
                     swap = true;
                 }
             }
@@ -91,11 +96,91 @@ public class SortAlgorithms {
         return numbers;
     }
 
-    private static void swapElementsInArray(int[] numbers, int j) {
+    public static int[] selectionSortNumberArray(int numbers[]){
+
+        long startTime = System.currentTimeMillis();
+
+        int sortedMarker = numbers.length - 1;
+
+        while(sortedMarker > 0){
+            int maxPos = sortedMarker;
+            for(int i = 0; i <= sortedMarker; i++){
+                if(numbers[i] > numbers[maxPos]){
+                    maxPos = i;
+                }
+            }
+
+            if(maxPos != sortedMarker){
+                swapElementsInArray(numbers, maxPos, sortedMarker);
+            }
+
+            sortedMarker--;
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("SelectionSort Runtime: " + (endTime - startTime) + " ms - SwapCount: " + swapCount);
+        swapCount = 0;
+
+        return numbers;
+    }
+
+    public static int[] quickSortNumberArray(int[] numbers){
+        long startTime = System.currentTimeMillis();
+
+        int sortedMarker = numbers.length - 1;
+
+        quickSortNumberArray(numbers, 0, numbers.length-1);
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("QuickSort Runtime: " + (endTime - startTime) + " ms - SwapCount: " + swapCount);
+        swapCount = 0;
+
+        return numbers;
+    }
+
+    private static void quickSortNumberArray(int[] numbers, int left, int right){
+
+        int indexLeft = left;
+        int indexRight = right;
+
+        if(left < right){
+            int pivot = numbers[(indexLeft + indexRight) / 2];
+
+            while(indexLeft <= indexRight){
+                while (numbers[indexLeft] < pivot){
+                    indexLeft++;
+                }
+
+                while (numbers[indexRight] > pivot){
+                    indexRight--;
+                }
+
+                if(indexLeft <= indexRight){
+                    swapElementsInArray(numbers, indexLeft, indexRight);
+                    indexLeft++;
+                    indexRight--;
+                }
+            }
+
+            if(left < indexRight){
+                quickSortNumberArray(numbers, left, indexRight);
+            }
+
+            if(indexLeft < right){
+                quickSortNumberArray(numbers, indexLeft, right);
+            }
+        }
+
+    }
+
+
+    private static void swapElementsInArray(int[] numbers, int i, int j) {
         swapCount++;
-        int temp = numbers[j];
-        numbers[j] = numbers[j + 1];
-        numbers[j + 1] = temp;
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
     }
 
     private static void printArray(int[] numbers) {

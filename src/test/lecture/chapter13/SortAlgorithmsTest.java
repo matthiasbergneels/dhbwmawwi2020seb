@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SortAlgorithmsTest {
 
-    static int count = 20000;
+    static int count = 100000;
     static int randomRange = 3000000;
     static int[] toSort = null;
 
@@ -43,11 +43,24 @@ class SortAlgorithmsTest {
 
         @Test
         void bubbleSortNumberArrayV3TimeBased() {
-            assertTimeout(Duration.ofMillis(500), () -> {
+            assertTimeout(Duration.ofSeconds(50), () -> {
                 int[] bubbleSortedArray = SortAlgorithms.bubbleSortNumberArrayV3(toSort.clone());
             });
 
         }
+
+        @Test
+        void selectionSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.selectionSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
+
+        @Test
+        void quickSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.quickSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
+
     }
 
 
@@ -77,6 +90,18 @@ class SortAlgorithmsTest {
         void bubbleSortNumberArraySortedV3() {
             int[] bubbleSortedArray = SortAlgorithms.bubbleSortNumberArrayV3(toSort.clone());
             assertTrue(isSorted(bubbleSortedArray));
+        }
+
+        @Test
+        void selectionSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.selectionSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
+
+        @Test
+        void quickSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.quickSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
         }
     }
 
@@ -108,6 +133,18 @@ class SortAlgorithmsTest {
             int[] bubbleSortedArray = SortAlgorithms.bubbleSortNumberArrayV3(toSort.clone());
             assertTrue(isSorted(bubbleSortedArray));
         }
+
+        @Test
+        void selectionSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.selectionSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
+
+        @Test
+        void quickSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.quickSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
     }
 
 
@@ -137,6 +174,18 @@ class SortAlgorithmsTest {
         void bubbleSortNumberArraySortedV3() {
             int[] bubbleSortedArray = SortAlgorithms.bubbleSortNumberArrayV3(toSort.clone());
             assertTrue(isSorted(bubbleSortedArray));
+        }
+
+        @Test
+        void selectionSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.selectionSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
+        }
+
+        @Test
+        void quickSortNumberArray() {
+            int[] sortedArray = SortAlgorithms.quickSortNumberArray(toSort.clone());
+            assertTrue(isSorted(sortedArray));
         }
     }
 

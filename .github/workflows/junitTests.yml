@@ -49,5 +49,3 @@ jobs:
           javac -d compiled -cp junit-platform-console-standalone-1.8.0-M1.jar @sources.txt
           javac -d compiled -cp junit-platform-console-standalone-1.8.0-M1.jar:compiled @tests.txt
           java -jar junit-platform-console-standalone-1.8.0-M1.jar --class-path compiled --scan-class-path
-
-  javac -cp junit-platform-console-standalone-1.8.0-M1.jar,compiled @sources.txt

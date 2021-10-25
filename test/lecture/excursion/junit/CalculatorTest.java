@@ -34,6 +34,7 @@ class CalculatorTest {
 
         @Test
         @DisplayName("add test, add 50.0 and 25.0 expected 75.0")
+        @Tag("integration")
         void add() {
             double expectedResult = 75.0;
             double result = calculatorToTest.add(50.0, 25.0);
@@ -43,6 +44,7 @@ class CalculatorTest {
 
         @Test
         @DisplayName("add test with large numbers, add 50000.0 and 25.0 expected 50025.0.0")
+        @Tag("localtunit")
         void addLargeNumbers() {
             double expectedResult = 50025.0;
             double result = calculatorToTest.add(50000.0, 25.0);

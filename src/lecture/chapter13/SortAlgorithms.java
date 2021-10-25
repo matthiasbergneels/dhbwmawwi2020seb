@@ -146,13 +146,17 @@ public class SortAlgorithms {
         int indexRight = right;
 
         if(left < right){
-            int pivot = numbers[(indexLeft + indexRight) / 2];
+
+            // pre sort left and right side
+            int pivot = numbers[indexRight];
 
             while(indexLeft <= indexRight){
+                // search for elements bigger than pivot element from left side
                 while (numbers[indexLeft] < pivot){
                     indexLeft++;
                 }
 
+                // search for elements smaller than pivot element from right side
                 while (numbers[indexRight] > pivot){
                     indexRight--;
                 }
@@ -164,13 +168,17 @@ public class SortAlgorithms {
                 }
             }
 
-            if(left < indexRight){
-                quickSortNumberArray(numbers, left, indexRight);
-            }
 
-            if(indexLeft < right){
-                quickSortNumberArray(numbers, indexLeft, right);
-            }
+                if (left < indexRight) {
+                    // pre-sorted left part-array
+                    quickSortNumberArray(numbers, left, indexRight);
+                }
+
+                if (indexLeft < right) {
+                    // pre-sorted right part-array
+                    quickSortNumberArray(numbers, indexLeft, right);
+                }
+
         }
 
     }

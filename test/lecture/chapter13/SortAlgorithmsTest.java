@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SortAlgorithmsTest {
 
-    static int count = 100000;
+    static int count = 50000;
     static int randomRange = 3000000;
     static int[] toSort = null;
 
